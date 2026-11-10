@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src wss://relay.kilombino.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <link rel="icon" href="data:,">
+  <title>Tu wallet Lightning</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Tu wallet Lightning</h1>
+      <p id="progress" class="progress" aria-live="polite"></p>
+    </header>
+
+    <!-- 1. Bienvenida -->
+    <section id="step-welcome" data-step="welcome">
+      <h2 tabindex="-1">Bienvenido</h2>
+      <p>Esta web te da acceso a una <strong>wallet Lightning</strong> para usar desde tu móvil. Es un saldo
+        que gestiona el nodo de la comunidad en tu nombre, y lo manejas desde una app (Alby Go o Zeus) con un
+        <strong>secreto de conexión (NWC)</strong> que te entregamos aquí.</p>
+      <p>Para crearla necesitas una <strong>invitación</strong>. Si todavía no tienes una, pídela por Telegram:</p>
+      <p><a class="button secondary" href="https://t.me/BuLLishforbtc" target="_blank" rel="noopener noreferrer">Pedir invitación en Telegram</a></p>
+      <button id="start" type="button">Ya tengo una invitación</button>
+    </section>
+
+    <!-- 2. Elegir wallet -->
+    <section id="step-wallet" data-step="wallet" hidden>
+      <h2 tabindex="-1">¿Qué wallet quieres usar?</h2>
+      <p>Elige la app donde vas a manejar tu wallet. Te explicamos cómo instalarla y conectarla.</p>
+      <div class="choices">
+        <button type="button" class="choice" data-wallet="albygo">Alby Go</button>
+        <button type="button" class="choice" data-wallet="zeus">Zeus</button>
+      </div>
+      <button type="button" class="secondary" data-back>Atrás</button>
+    </section>
+
+    <!-- 3. Guía de la wallet elegida -->
+    <section id="step-guide" data-step="guide" hidden>
+      <h2 tabindex="-1" id="guide-title"></h2>
+      <p><a id="play-link" class="button" target="_blank" rel="noopener noreferrer">Abrir en Google Play</a></p>
+      <p>Cuando la tengas instalada, el procedimiento será:</p>
+      <ol id="guide-steps"></ol>
+      <p class="warning" id="guide-warning"></p>
+      <div class="actions">
+        <button type="button" class="secondary" data-back>Atrás</button>
+        <button id="continue" type="button">Ya la tengo, continuar</button>
+      </div>
+    </section>
+
+    <!-- 4. Invitación y nombre -->
+    <section id="step-claim" data-step="claim" hidden>
+      <h2 tabindex="-1">Crea tu wallet</h2>
+      <form id="claim" autocomplete="off">
+        <label for="invite">Código de invitación</label>
+        <input id="invite" name="invite" type="text" inputmode="text" autocapitalize="characters"
+               autocomplete="off" autocorrect="off" spellcheck="false" maxlength="40"
+               placeholder="XXXXX-XXXXX-XXXXX-XXXXX-XXXXXX" required>
+        <label for="name">Tu nombre</label>
+        <input id="name" name="name" type="text" autocomplete="off" autocorrect="off" spellcheck="false"
+               maxlength="40" placeholder="Nombre o alias" required>
+        <p class="hint">Así te reconocerá el administrador. Letras, números, espacios y . _ - '</p>
+        <div class="actions">
+          <button type="button" class="secondary" data-back>Atrás</button>
+          <button id="submit" type="submit">Crear mi wallet</button>
+        </div>
+      </form>
+      <p class="hint">¿Sin invitación? <a href="https://t.me/BuLLishforbtc" target="_blank" rel="noopener noreferrer">Pídela en Telegram</a>.</p>
+    </section>
+
+    <p id="status" role="status" aria-live="polite"></p>
+
+    <!-- 5. Resultado -->
+    <section id="step-result" data-step="result" hidden>
+      <h2 tabindex="-1">Tu secreto de conexión</h2>
+      <p class="warning"><strong>Se muestra una sola vez.</strong> <span id="save-warning"></span></p>
+      <p id="scan-hint"></p>
+      <textarea id="secret" readonly rows="5" spellcheck="false" autocomplete="off" aria-label="Secreto de conexión NWC"></textarea>
+      <div class="actions">
+        <button id="copy" type="button">Copiar</button>
+        <a id="open" class="button" rel="noreferrer">Abrir en mi wallet</a>
+      </div>
+      <img id="qr" alt="Código QR del secreto de conexión" width="220" height="220">
+      <p class="hint" id="same-phone"></p>
+      <button id="done" type="button" class="secondary">Ya lo he guardado</button>
+    </section>
+
+    <!-- 6. Final -->
+    <section id="step-done" data-step="done" hidden>
+      <h2 tabindex="-1">Listo</h2>
+      <p>Tu secreto ya no se muestra en esta página. Si lo has guardado, tu wallet está lista para usarse.</p>
+      <p>Si lo perdiste antes de guardarlo, contacta con el administrador en
+        <a href="https://t.me/BuLLishforbtc" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
+    </section>
+
+    <footer>
+      <p>Esta es una wallet <strong>custodial</strong>: tus fondos están en el nodo de la comunidad, no en tu dispositivo. Úsala para cantidades pequeñas.</p>
+    </footer>
+  </main>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
