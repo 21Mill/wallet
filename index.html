@@ -1,30 +1,47 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src wss://relay.kilombino.com; base-uri 'none'; form-action 'none'; object-src 'none'">
-  <link rel="icon" href="data:,">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src wss://relay.kilombino.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="theme-color" content="#faf7f2">
+  <link rel="icon" type="image/png" href="img/nostromostro.png">
   <title>Tu wallet Lightning</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="topbar">
+    <a class="brand" href="https://nostromostro.github.io/" target="_blank" rel="noopener noreferrer">
+      <img src="img/nostromostro.png" alt="" width="40" height="40">
+      <span>NostroMostro</span>
+    </a>
+    <p id="progress" class="progress" aria-live="polite"></p>
+  </header>
+
   <main>
-    <header>
+    <div class="hero">
+      <img class="hero-logo" src="img/nostromostro.png" alt="NostroMostro: toro con rayo" width="140" height="140">
       <h1>Tu wallet Lightning</h1>
-      <p id="progress" class="progress" aria-live="polite"></p>
-    </header>
+      <p class="tagline">La wallet de la comunidad NostroMostro, el exchange P2P de Bitcoin para España.</p>
+    </div>
 
     <!-- 1. Bienvenida -->
     <section id="step-welcome" data-step="welcome">
+      <div class="theme-switch" role="group" aria-label="Apariencia de la página">
+        <span>Apariencia</span>
+        <button type="button" class="seg" data-theme-choice="light" aria-pressed="true">☀ Claro</button>
+        <button type="button" class="seg" data-theme-choice="dark" aria-pressed="false">☾ Oscuro</button>
+      </div>
       <h2 tabindex="-1">Bienvenido</h2>
       <p>Esta web te da acceso a una <strong>wallet Lightning</strong> para usar desde tu móvil. Es un saldo
         que gestiona el nodo de la comunidad en tu nombre, y lo manejas desde una app (Alby Go o Zeus) con un
         <strong>secreto de conexión (NWC)</strong> que te entregamos aquí.</p>
-      <p>Para crearla necesitas una <strong>invitación</strong>. Si todavía no tienes una, pídela por Telegram:</p>
-      <p><a class="button secondary" href="https://t.me/BuLLishforbtc" target="_blank" rel="noopener noreferrer">Pedir invitación en Telegram</a></p>
-      <button id="start" type="button">Ya tengo una invitación</button>
+      <p>Para crearla necesitas una <strong>invitación</strong>. Si todavía no tienes una, pídela por Telegram.</p>
+      <div class="actions">
+        <button id="start" type="button">Ya tengo una invitación</button>
+        <a class="button secondary" href="https://t.me/BuLLishforbtc" target="_blank" rel="noopener noreferrer">Pedir invitación en Telegram</a>
+      </div>
     </section>
 
     <!-- 2. Elegir wallet -->
@@ -113,11 +130,11 @@
         <ol class="mostro-steps">
           <li>
             <p>Abre Mostro y entra en <strong>Configuración</strong>. En <strong>Pagos</strong>, pulsa <strong>Billetera NWC</strong> (aparece como «Sin conectar»).</p>
-            <img src="img/mostro-nwc-1.jpg" alt="Pantalla de Configuración de Mostro con la opción Billetera NWC, en el apartado Pagos, señalada con una flecha roja" width="289" height="640" loading="lazy">
+            <img src="img/mostro-nwc-1.jpg" alt="Pantalla de Configuración de Mostro con la opción Billetera NWC, en el apartado Pagos, señalada con una flecha roja" width="289" height="640">
           </li>
           <li>
             <p>En «Conectar tu billetera», pulsa <strong>Pegar</strong> (con el secreto copiado de tu gestor de contraseñas) o <strong>Escanear QR</strong> (el QR de esta página) y, por último, <strong>Conectar</strong>.</p>
-            <img src="img/mostro-nwc-2.jpg" alt="Pantalla Billetera NWC de Mostro con el campo URI de conexión y los botones Pegar y Escanear QR" width="289" height="640" loading="lazy">
+            <img src="img/mostro-nwc-2.jpg" alt="Pantalla Billetera NWC de Mostro con el campo URI de conexión y los botones Pegar y Escanear QR" width="289" height="640">
           </li>
         </ol>
         <p class="hint">Mostro guarda la URI solo en tu dispositivo y nunca la publica en Nostr.</p>
