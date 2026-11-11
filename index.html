@@ -44,7 +44,7 @@
       <p><a id="play-link" class="button" target="_blank" rel="noopener noreferrer">Abrir en Google Play</a></p>
       <p>Cuando la tengas instalada, el procedimiento será:</p>
       <ol id="guide-steps"></ol>
-      <p class="warning" id="guide-warning"></p>
+      <p class="alert" id="guide-warning"></p>
       <div class="actions">
         <button type="button" class="secondary" data-back>Atrás</button>
         <button id="continue" type="button">Ya la tengo, continuar</button>
@@ -75,23 +75,61 @@
 
     <!-- 5. Resultado -->
     <section id="step-result" data-step="result" hidden>
-      <h2 tabindex="-1">Tu secreto de conexión</h2>
-      <p class="warning"><strong>Se muestra una sola vez.</strong> <span id="save-warning"></span></p>
-      <p id="scan-hint"></p>
-      <textarea id="secret" readonly rows="5" spellcheck="false" autocomplete="off" aria-label="Secreto de conexión NWC"></textarea>
-      <div class="actions">
-        <button id="copy" type="button">Copiar</button>
-        <a id="open" class="button" rel="noreferrer">Abrir en mi wallet</a>
+      <h2 tabindex="-1">Guarda tu secreto NWC</h2>
+      <div class="alert" role="alert">
+        <p class="alert-title">Último paso importante: guárdalo ahora</p>
+        <p>Se muestra <strong>una sola vez</strong> y no podremos recuperarlo. Es lo que da acceso a tu wallet: no lo compartas con nadie.</p>
+        <ol class="alert-steps">
+          <li>Copia el secreto con el botón <strong>Copiar</strong>.</li>
+          <li>Pégalo en tu <strong>gestor de contraseñas</strong> (Bitwarden, KeePass, 1Password…) con un nombre que reconozcas, por ejemplo «Wallet NostroMostro».</li>
+          <li>Marca la casilla de confirmación que hay debajo.</li>
+        </ol>
       </div>
+      <label for="secret">Tu secreto NWC</label>
+      <textarea id="secret" readonly rows="5" spellcheck="false" autocomplete="off"></textarea>
+      <div class="actions">
+        <button id="copy" type="button" class="large">Copiar</button>
+        <a id="open" class="button secondary" rel="noreferrer">Abrir en mi wallet</a>
+      </div>
+      <p id="scan-hint"></p>
       <img id="qr" alt="Código QR del secreto de conexión" width="220" height="220">
       <p class="hint" id="same-phone"></p>
-      <button id="done" type="button" class="secondary">Ya lo he guardado</button>
+
+      <label class="confirm" for="saved">
+        <input type="checkbox" id="saved">
+        <span>He guardado mi secreto NWC en mi gestor de contraseñas</span>
+      </label>
+      <button id="done" type="button" disabled>Continuar</button>
+
+      <div class="epilogue">
+        <h3>Epílogo: conecta tu wallet con Mostro</h3>
+        <p>Con tu wallet conectada directamente a Mostro, todo es más rápido y cómodo:</p>
+        <ul>
+          <li>Mostro <strong>genera las facturas automáticamente</strong>.</li>
+          <li>Cobra y paga las facturas de tus operaciones desde tu wallet, <strong>sin que tengas que copiarlas a mano</strong>.</li>
+          <li>Envías <strong>fianzas y pagos pulsando un solo botón</strong>.</li>
+          <li>En general, usar Mostro resulta mucho más cómodo.</li>
+        </ul>
+        <ol class="mostro-steps">
+          <li>
+            <p>Abre Mostro y entra en <strong>Configuración</strong>. En <strong>Pagos</strong>, pulsa <strong>Billetera NWC</strong> (aparece como «Sin conectar»).</p>
+            <img src="img/mostro-nwc-1.jpg" alt="Pantalla de Configuración de Mostro con la opción Billetera NWC, en el apartado Pagos, señalada con una flecha roja" width="289" height="640" loading="lazy">
+          </li>
+          <li>
+            <p>En «Conectar tu billetera», pulsa <strong>Pegar</strong> (con el secreto copiado de tu gestor de contraseñas) o <strong>Escanear QR</strong> (el QR de esta página) y, por último, <strong>Conectar</strong>.</p>
+            <img src="img/mostro-nwc-2.jpg" alt="Pantalla Billetera NWC de Mostro con el campo URI de conexión y los botones Pegar y Escanear QR" width="289" height="640" loading="lazy">
+          </li>
+        </ol>
+        <p class="hint">Mostro guarda la URI solo en tu dispositivo y nunca la publica en Nostr.</p>
+      </div>
     </section>
 
     <!-- 6. Final -->
     <section id="step-done" data-step="done" hidden>
       <h2 tabindex="-1">Listo</h2>
-      <p>Tu secreto ya no se muestra en esta página. Si lo has guardado, tu wallet está lista para usarse.</p>
+      <p>Tu secreto ya no se muestra en esta página: está en tu gestor de contraseñas.</p>
+      <p><strong>Para usar tu wallet en Mostro:</strong> abre Mostro, entra en Configuración, Pagos, Billetera NWC, pulsa
+        «Pegar» con el secreto copiado de tu gestor de contraseñas y por último «Conectar».</p>
       <p>Si lo perdiste antes de guardarlo, contacta con el administrador en
         <a href="https://t.me/BuLLishforbtc" target="_blank" rel="noopener noreferrer">Telegram</a>.</p>
     </section>
